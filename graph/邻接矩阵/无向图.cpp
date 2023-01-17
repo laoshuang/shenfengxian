@@ -4,11 +4,11 @@ typedef int WeightTypeOrEdgeType;
 #define MAXVEX 100
 #define INFINITY 9999
 
-typedef struct 
+typedef struct 		//å›¾èŠ‚ç‚¹
 {
-	VertexNameType vex[MAXVEX];			//¶¥µãÊı×é£¨°üÀ¨¶¥µãĞÅÏ¢£© 
-	WeightTypeOrEdgeType edge[MAXVEX][MAXVEX];		//±ßÊı×é£¬ÁÚ½Ó¾ØÕó 
-	int VertexNum,EdgeNum;		//¶¥µãÊıºÍ±ßÊı 
+	VertexNameType vex[MAXVEX];			//é¡¶ç‚¹æ•°ç»„ï¼ˆåŒ…æ‹¬é¡¶ç‚¹ä¿¡æ¯ï¼‰ 
+	WeightTypeOrEdgeType edge[MAXVEX][MAXVEX];		//è¾¹æ•°ç»„ï¼Œé‚»æ¥çŸ©é˜µ 
+	int VertexNum,EdgeNum;		//é¡¶ç‚¹æ•°å’Œè¾¹æ•° 
  }Graph;
  
 void CreateGraph(Graph *G); 
@@ -16,24 +16,24 @@ void Show(Graph *G);
 
 void CreateGraph(Graph *G){
 	int i,j,k,weight;
-	//¶¥µãÊıºÍ±ßÊı 
-	printf("ÊäÈë´ËÍ¼µÄ¶¥µãÊıºÍ±ßÊı:\n");
+	//é¡¶ç‚¹æ•°å’Œè¾¹æ•° 
+	printf("è¾“å…¥æ­¤å›¾çš„é¡¶ç‚¹æ•°å’Œè¾¹æ•°:\n");
 	scanf("%d",&G->VertexNum);getchar();scanf("%d",&G->EdgeNum);getchar();
-	//¶¥µãÊı×é 
+	//é¡¶ç‚¹æ•°ç»„ 
 	for(i=0;i<G->VertexNum;i++){
-		printf("ÇëÊäÈëµÚ%d¸ö¶¥µãµÄÃû³Æ:",i+1);
+		printf("è¯·è¾“å…¥ç¬¬%dä¸ªé¡¶ç‚¹çš„åç§°:",i+1);
 		scanf("%c",&G->vex[i]);getchar();
 	}
-	//ÁÚ½Ó¾ØÕó - ³õÊ¼»¯ 
+	//é‚»æ¥çŸ©é˜µ - åˆå§‹åŒ– 
 	for(i=0;i<G->VertexNum;i++) {
 		for(j=0;j<G->VertexNum;j++){
 			if(i==j) G->edge[i][j]=0;
 				else  G->edge[i][j]=INFINITY;
 		}
 	}
-	//ÁÚ½Ó¾ØÕó - ±£´æ±ß
+	//é‚»æ¥çŸ©é˜µ - ä¿å­˜è¾¹
 	for(i=0;i<G->EdgeNum;i++){
-		printf("ÇëÊäÈëµÚ%dÌõ±ßµÄÁ½¸öÁÚ½ÓµãµÄÏÂ±ê ºÍ È¨Öµ:\n",i+1);
+		printf("è¯·è¾“å…¥ç¬¬%dæ¡è¾¹çš„ä¸¤ä¸ªé‚»æ¥ç‚¹çš„ä¸‹æ ‡ å’Œ æƒå€¼:\n",i+1);
 		scanf("%d",&j);getchar();scanf("%d",&k);getchar();scanf("%d",&weight);getchar();
 		G->edge[j][k]=weight;
 		G->edge[k][j]=weight;
@@ -42,7 +42,7 @@ void CreateGraph(Graph *G){
 
 void Show(Graph *G){
 	int i,j;
-	puts("ÁÚ½Ó¾ØÕóÈçÏÂ!!!!");
+	puts("é‚»æ¥çŸ©é˜µå¦‚ä¸‹!!!!");
 	
 	printf("  ");
 	for(i=0;i<G->VertexNum;i++)
@@ -67,4 +67,3 @@ int main()
 	Show(&G);
 	return 0;
 }
-
